@@ -2,9 +2,8 @@ const express = require('express');
 const router=express.Router();
 const Job= require('./../../model/Job');
 const Student = require('./../../model/Student');
-const StudentCookieValidator=require('./../../middlewares/StudentCookieValidator');
 
-router.get('/', StudentCookieValidator, async (req, res)=>{
+router.get('/',  async (req, res)=>{
     try {
         const authId=req.cookies.authId;
         const studentDetails=await Student.findOne({authId: authId});
